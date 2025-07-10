@@ -7,7 +7,7 @@ from typing import Generator
 logger = logging.getLogger(__name__)
 
 # Database configuration
-DB_HOST = os.environ.get('DB_HOST', '194.238.17.158')
+DB_HOST = os.environ.get('DB_HOST', 'localhost')
 DB_USER = os.environ.get('DB_USER', 'myuser')
 DB_PASSWORD = os.environ.get('DB_PASSWORD', 'Sahil@123456')
 DB_NAME = os.environ.get('DB_NAME', 'lawvriksh_db')
