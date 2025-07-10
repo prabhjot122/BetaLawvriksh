@@ -1,0 +1,22 @@
+services:
+  # Backend API Service
+
+  # Frontend Service (if you want to deploy frontend on Render too)
+  - type: web
+    name: lawvriksh-frontend
+    runtime: node
+    buildCommand: "npm install && npm run build:prod"
+    startCommand: "npm run preview -- --host 0.0.0.0 --port $PORT"
+    plan: free
+    region: oregon
+    branch: main
+    rootDir: .
+    envVars:
+      - key: VITE_API_URL
+        value: https://lawvriksh-feedback-api.onrender.com
+      - key: NODE_ENV
+        value: production
+      - key: SKIP_TYPE_CHECK
+        value: "true"
+
+# No external database needed - using SQLite
