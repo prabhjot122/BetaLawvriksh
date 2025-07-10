@@ -17,7 +17,7 @@ def get_db_config():
     return {
         'host': os.environ.get('DB_HOST', 'localhost'),
         'user': os.environ.get('DB_USER', 'myuser'),
-        'password': os.environ.get('DB_PASSWORD', 'Sahilraj@123456'),
+        'password': os.environ.get('DB_PASSWORD', 'Sahil@123456'),
         'database': os.environ.get('DB_NAME', 'lawvriksh_db'),
         'port': int(os.environ.get('DB_PORT', '3306')),
         'charset': 'utf8mb4'
