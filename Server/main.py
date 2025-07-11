@@ -4,7 +4,7 @@ from datetime import datetime
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 
@@ -107,14 +107,35 @@ async def health_check():
     )
 
 
+@app.get("/favicon.ico")
+async def favicon():
+    """Handle favicon requests to prevent 404 errors"""
+    return JSONResponse(status_code=204, content=None)
+
+
 @app.exception_handler(404)
 async def not_found_handler(request: Request, exc: HTTPException):
-    return {"error": "Endpoint not found"}
+    return JSONResponse(
+        status_code=404,
+        content={"error": "Endpoint not found"}
+    )
 
 
 @app.exception_handler(500)
 async def internal_error_handler(request: Request, exc: HTTPException):
-    return {"error": "Internal server error"}
+    return JSONResponse(
+        status_code=500,
+        content={"error": "Internal server error"}
+    )
+
+
+@app.exception_handler(Exception)
+async def general_exception_handler(request: Request, exc: Exception):
+    logger.error(f"Unhandled exception: {str(exc)}")
+    return JSONResponse(
+        status_code=500,
+        content={"error": "Internal server error", "detail": "An unexpected error occurred"}
+    )
 
 
 if __name__ == "__main__":
