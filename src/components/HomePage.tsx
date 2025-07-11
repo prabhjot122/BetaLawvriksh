@@ -86,7 +86,7 @@ function HomePage() {
     setSubmitError('');
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/register`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'https://www.lawvriksh.com'}/api/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -169,7 +169,7 @@ function HomePage() {
         contactWilling: feedbackData.contactWilling || null
       };
 
-      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/feedback`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'https://www.lawvriksh.com'}/api/feedback`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
