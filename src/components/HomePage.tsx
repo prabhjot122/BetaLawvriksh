@@ -79,6 +79,7 @@ function HomePage() {
       [e.target.name]: e.target.value
     });
   };
+  const API_URL= "https://www.lawvriksh.com/api";
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -86,7 +87,7 @@ function HomePage() {
     setSubmitError('');
 
     try {
-      const response = await fetch(`https://www.lawvriksh.com/api/register`, {
+      const response = await fetch(`${API_URL}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -169,7 +170,7 @@ function HomePage() {
         contactWilling: feedbackData.contactWilling || null
       };
 
-      const response = await fetch(`https://www.lawvriksh.com/api/feedback`, {
+      const response = await fetch(`${API_URL}/feedback`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
